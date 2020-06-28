@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    .completed {
+      text-decoration: line-through
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="container my-3">
+    <button id="get" class="btn btn-outline-primary">Get</button>
+    <button id="post" class="btn btn-outline-primary">Post</button>
+    <button id="patch" class="btn btn-outline-primary">Patch</button>
+    <button id="delete" class="btn btn-outline-primary">Delete</button>
+  </div>
+  <script>
+
+    document.querySelector('#get').addEventListener('click', getData);
+    document.querySelector('#post').addEventListener('click', postData);
+    document.querySelector('#patch').addEventListener('click', patchData);
+    document.querySelector('#delete').addEventListener('click', deleteData);
+    
+
+    var uuid = '19ab659b-8d43-427e-8552-6517262b063b';
+    var token = '0ltAYYUTzGb0yZClEXMvUrflj3G9wDXdeKmlTuK4q4Dg2bxYsCdcuq8qLN3t';
+    var apiPath = 'https://course-ec-api.hexschool.io/';
+
+    // 小心，有錯～，請參考課程影片
+    var sampleData = {
+      title: '好茶',
+      category: 'tea',
+      content: '內容',
+      description: '紅色紅色',
+      imageUrl: [
+        'https://images.unsplash.com/photo-1587918515749-a2a68b40a124?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+      ],
+      enabled: true,
+      origin_price: 100,
+      price: 90,
+      unit: '杯',
+    }
+
+    // ★取得資料時，需夾帶header傳送
+    axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+    // axios 設定說明：https://github.com/axios/axios#config-defaults
+
+    function getData() {
+      console.log('getData');
+      var api = `${apiPath}api/${uuid}/admin/ec/products`;
+      console.log(api);
+      axios.get(api)
+        .then(function(res) {
+            console.log(res);
+        })
+    }
+
+    function postData() {
+      console.log('postData');
+      var api = `${apiPath}api/${uuid}/admin/ec/product`;
+      var data = {
+        title: '好茶',
+        category: 'tea',
+        content: '內容',
+        description: '紅色紅色',
+        imageUrl: [
+            'https://images.unsplash.com/photo-1587918515749-a2a68b40a124?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+        ],
+        enabled: true,
+        origin_price: 100,
+        price: 90,
+        unit: '杯',
+      }
+      console.log(api);
+
+    //   post時需夾帶資料上傳
+      axios.post(api, data) 
+        .then(function(res) {
+            console.log(res);
+        })
+    }
+
+    function patchData() {
+      console.log('patchData');
+      var api = `${apiPath}api/${uuid}/admin/ec/product/xKXlkkoWMhG2ZuMmaDImk1vvhCphjlVPI4AJ9ab5OMhK6REotdWWc0k7Hix696ll`;
+      var data = {
+        title: '更新好茶',
+        category: 'tea',
+        content: '內容',
+        description: '紅色紅色',
+        imageUrl: [
+            'https://images.unsplash.com/photo-1587918515749-a2a68b40a124?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+        ],
+        enabled: true,
+        origin_price: 100,
+        price: 90,
+        unit: '杯',
+      }
+      console.log(api);
+
+      axios.patch(api, data) 
+        .then(function(res) {
+            console.log(res);
+        })
+    }
+    
+    function deleteData() {
+      console.log('deleteData');
+      var api = `${apiPath}api/${uuid}/admin/ec/product/CAZ9wtm0RlB2c1imKGmqsSxy0iRWEu6iQ8GIISMV6UlTpDAiE6aevkcYvjQNbuW5`;
+      console.log(api);
+      axios.delete(api)
+        .then(function(res) {
+            console.log(res);
+        })
+    }
+
+  </script>
+</body>
+</html>

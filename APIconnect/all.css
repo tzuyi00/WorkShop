@@ -1,0 +1,17 @@
+.product-img {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+.text-red{
+    color: red;
+}
+.lineThrough{
+    text-decoration: line-through;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #bababa;
+    font-size: .8em;
+}
