@@ -4,5 +4,5 @@
 [todoList](https://tzuyi00.github.io/hx-js-training/todoList)
 
 ---
-## week  - **課程API串接**
+## week2  - **課程API串接**
 [電商API串接](https://tzuyi00.github.io/hx-js-training/APIconnect)
