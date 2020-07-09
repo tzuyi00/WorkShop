@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .total {
+            display: none;
+            background-color: #dddddd;
+            width: 400px;
+            line-height: 50px;
+            font-weight: 900;
+            text-align: center;
+        }
+        .blue {
+            color: #0000ff;
+        }
+        .green {
+            color: #00aa00;
+        }
+        .yellow {
+            color: #eeee00;
+        }
+        .orange {
+            color: #FF8800;
+        }
+        .pink {
+            color: #ff88c2;
+        }
+        .redOrange {
+            color: #ff8888;
+        }
+        .red {
+            color: #ff0000;
+        }
+
+    </style>
+
+</head>
+<body>
+    <input type="text" class="height" placeholder="請輸入您的身高(公分)">
+    <input type="text" class="kg" placeholder="請輸入您的體重(公斤)">
+    <input type="button" class="send" value="計算">
+    <p class="total">您的 BMI 指數為  <span class="BMI"></span>， 狀態是 <span class="status"></span></p>
+
+
+
+    <script>
+        const height = document.querySelector(".height");
+        const kg = document.querySelector(".kg");
+        const send = document.querySelector(".send");
+        const bmiDOM = document.querySelector(".BMI");
+        const statusDOM = document.querySelector(".status");
+        const total = document.querySelector(".total");
+
+        // 存放資料
+        const BMIData = {
+            overThin: {
+                class: "blue",
+                statusText: "體重過輕"
+            },
+            normal: {
+                class: "green",
+                statusText: "正常"
+            },
+            overweight: {
+                class: "yellow",
+                statusText: "過重"
+            },
+            slightObesit: {
+                class: "orange",
+                statusText: "輕度肥胖"
+            },
+            mildObesity: {
+                class: "pink",
+                statusText: "輕度肥胖"
+            },
+            middleObesity: {
+                class: "redOrange",
+                statusText: "中度肥胖"
+            },
+            extremeeObesity: {
+                class: "red",
+                statusText: "重度肥胖"
+            }
+        };
+
+        // 處理資料
+        function calculationBMI() {
+            const thisHeight = parseInt(height.value); //parseInt字串轉為數字
+            const thisKg = parseInt(kg.value);
+            const bmi = (thisKg / (thisHeight / 100 * thisHeight / 100)).toFixed(2);
+            if (bmi > 0) {
+                if (bmi < 18.5) {
+                    render("overThin", bmi);
+                } else if (bmi < 24) {
+                    render("normal", bmi);
+                } else if (bmi < 27) {
+                    render("overweight", bmi);
+                } else if (bmi < 30) {
+                    render("slightObesit", bmi);
+                } else if (bmi < 35) {
+                    render("middleObesity", bmi);
+                } else {
+                    render("extremeeObesity", bmi);
+                }
+            } else {
+                alert("資料錯誤");
+                total.style.display = "none";
+            }
+            height.value = "";
+            kg.value = "";
+        }
+
+        // 畫面
+        function render(status, bmiText) {
+            bmiDOM.textContent = bmiText;
+            total.style.display = "block";
+            statusDOM.textContent = BMIData[status].statusText;
+            statusDOM.setAttribute("class", BMIData[status].class);
+        }
+
+        send.addEventListener("click", calculationBMI);
+
+    </script>
+</body>
+
+</html>
