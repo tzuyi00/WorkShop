@@ -9,4 +9,4 @@
 
 ---
 ## week3  - **vue 開發產品管理頁面**
-[電商API串接](https://tzuyi00.github.io/hx-js-training/w3-backend)
+[開發產品管理頁面](https://tzuyi00.github.io/hx-js-training/w3-backend)
