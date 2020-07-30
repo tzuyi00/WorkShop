@@ -14,3 +14,7 @@
 ---
 ## week4  - **Vue 與 API 串接**
 [Vue 與 API 串接](https://tzuyi00.github.io/hx-js-training/w4-login/Login.html)
+
+---
+## week5  - **購物車、表單驗證**
+[購物車、表單驗證](https://tzuyi00.github.io/hx-js-training/w5-valid)
