@@ -180,7 +180,7 @@ new Vue({
     createOrder() {
       this.isLoading = true;
       const url = `${this.APIPATH}/api/${this.UUID}/ec/orders`;
-      this.$set(this.form, 'coupon', this.form.coupon);
+      // this.$set(this.form, 'coupon', this.form.coupon);
 
       axios.post(url, this.form).then((response) => {
         console.log('訂單回傳資料',response);
